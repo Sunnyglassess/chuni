@@ -29,5 +29,5 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.12.0'
+    // Sin dependencias externas para evitar problemas de compilación
 }
