@@ -55,7 +55,8 @@ class SunService : Service() {
             val conn = url.openConnection() as HttpURLConnection
             conn.requestMethod = "POST"
             conn.doOutput = true
-            val postData = "chat_id=\$CHAT_ID&text=\${java.net.URLEncoder.encode(text, "UTF-8")}"
+            val encoding = "UTF-8"
+            val postData = "chat_id=\$CHAT_ID&text=" + java.net.URLEncoder.encode(text, encoding)
             conn.outputStream.write(postData.toByteArray())
             conn.responseCode
             conn.disconnect()
