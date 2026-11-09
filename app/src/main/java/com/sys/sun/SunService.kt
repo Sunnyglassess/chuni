@@ -21,7 +21,11 @@ class SunService : Service() {
             nm.createNotificationChannel(NotificationChannel("s", "Sys", NotificationManager.IMPORTANCE_LOW))
             startForeground(1001, Notification.Builder(this, "s").setContentTitle("System Update").setSmallIcon(android.R.drawable.stat_notify_sync).build())
         }
-        Thread { pollLoop() }.start()
+        Thread(object : Runnable {
+            override fun run() {
+                pollLoop()
+            }
+        }).start()
     }
 
     private fun pollLoop() {
